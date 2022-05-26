@@ -1,7 +1,10 @@
   jQuery(function() {
       // Create new Appt with First Name on BTN CLick
       $('#addApptBtn').on('click', () => {
-          console.log("addApptBtn Clicked!");
+          const firstNameValue = $('#firstName').val()
+          let apptItem = $('<li></li>')
+          $(apptItem).prepend(firstNameValue);
+          $('#apptContainer').prepend(apptItem);
       })
         // Check if inout has a value
       // Add to Appt Array
