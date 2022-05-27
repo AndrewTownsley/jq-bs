@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jQuery Todo Form</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script
     src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -25,31 +26,43 @@
     <section>
         <nav>
             <h1 id="title">BootQuery</h1>
+            <p>
+                <small class="text-danger">* required field</small>
+            </p>
         </nav>
         <section>
             <form action="" id="userInputForm">
                 <div>
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName">
+                    <label class="form-label" for="firstName">
+                        First Name 
+                        <small class="text-danger">*</small>
+                    </label>
+                    <input class="form-control" type="text" id="firstName">
                 </div>
                 <div>
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName">
+                    <label class="form-label" for="lastName">
+                        Last Name                         
+                        <small class="text-danger">*</small>
+                    </label>
+                    <input class="form-control" type="text" id="lastName">
                 </div>
                 <div>
-                    <label for="">Email</label>
-                    <input type="email" id="email">
+                    <label class="form-label" for="email">
+                        Email                         
+                        <small class="text-danger">*</small>
+                    </label>
+                    <input class="form-control" type="email" id="email">
                 </div>
                 <div>
-                    <label for="date">Appointment Date & Time</label>
+                    <label class="form-label" for="date">Appointment Date & Time</label>
                     <!-- Date & Time Picker -->
                 </div>
-                <button id="addApptBtn" type="button">Book Appointment</button>
+                <button class="btn btn-outline-primary" id="addApptBtn" type="button">Book Appointment</button>
             </form>
         </section>
         <section>
             <h3>Appointments:</h3>
-            <ul id="apptContainer">
+            <ul class="list-unstyled" id="apptContainer">
                 <!-- Appointments display here... -->
             </ul>
         </section>

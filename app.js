@@ -2,11 +2,17 @@
       // Create new Appt with First Name on BTN CLick
       $('#addApptBtn').on('click', () => {
           const firstNameValue = $('#firstName').val()
-          let apptItem = $('<li></li>')
-          $(apptItem).prepend(firstNameValue);
-          $('#apptContainer').prepend(apptItem);
+          const lastNameValue = $('#lastName').val()
+          const emailNameValue = $('#email').val()
+          let apptItem = $('<li><button>X</button></li>')
+          if($('#firstName').val().length !== 0) {
+              $(apptItem).prepend(`<span>${firstNameValue}</span> <span>${lastNameValue}</span> <span>${emailNameValue}</span>`);
+              $('#apptContainer').prepend(apptItem);
+            } else {
+                $('#userInputForm').prepend('<p class="text-danger">All fields are required</p>')
+            }
       })
-        // Check if inout has a value
       // Add to Appt Array
       // map over appt array and append to appt div
+      // !value in all fields ? BTN-disabled
   })
