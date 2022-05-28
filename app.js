@@ -7,15 +7,21 @@
       createAppt()
       getApptDetails()  
       $('#apptContainer').prepend(apptArray.map((item) => {
-          return `       <li class=" list-group-item">
-          <span>${item.firstName}</span>
-          <span>${item.lastName}</span> 
-          <p><span>${item.email}</span></p>
-          <div class="d-flex justify-content-between">
-            <button onclick="deleteAppt(${item.id})" class="btn btn-danger">X</button>
+          return `    
+          <li class=" list-group-item">
+            <p class="d-flex justify-content-between">
+              <span>
+                <span>${item.firstName}</span>
+                <span>${item.lastName}</span> 
+              </span>
+                <span>${item.type}</span> 
+            </p>
+             <p><span>${item.email}</span></p>
+            <div class="d-flex justify-content-between">
+            <button id="deleteApptBtn" class="btn btn-danger">X</button>
             <a onclick="apptSelected('${item.id}')" class="btn btn-primary" href="#">view Appointment</a>
-          </div>
-          </li>
+            </div>
+      </li>
           `
         }))
 
@@ -28,12 +34,13 @@
     console.log("apptArray",apptArray);
 
 
-function makeApptItem(firstName, lastName, email, id) {
+function makeApptItem(firstName, lastName, email, type, id) {
     return {
         firstName,
         lastName,
         email,
-        id
+        type,
+        id,
     }
 }
 
@@ -42,13 +49,19 @@ function makeApptItem(firstName, lastName, email, id) {
         const firstNameValue = $('#firstName').val()
         const lastNameValue = $('#lastName').val()
         const emailValue = $('#email').val()
+        const apptTypeValue = $('#apptType').val()
         let id = apptArray ? apptArray.length + 1 : 1;
-        let apptItem = makeApptItem(firstNameValue, lastNameValue, emailValue, id)
+        let apptItem = makeApptItem(firstNameValue, lastNameValue, emailValue, apptTypeValue, id)
         if($('#firstName').val().length !== 0) {
             $('#apptContainer').prepend(`
             <li class=" list-group-item">
-                 <span>${apptItem.firstName}</span>
-                 <span>${apptItem.lastName}</span> 
+                <p>
+                  <span>
+                    <span>${apptItem.firstName}</span>
+                    <span>${apptItem.lastName}</span> 
+                  </span>
+                    <span>${apptItem.type}</span> 
+                </p>
                  <p><span>${apptItem.email}</span></p>
                     <button id="deleteApptBtn" class="btn btn-danger">X</button>
                  <a onclick="apptSelected('${apptItem.id}')" class="btn btn-primary" href="#">view Appointment</a>
