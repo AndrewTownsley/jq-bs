@@ -16,12 +16,10 @@
 <body>
     
     <section>
-        <nav>
-            <h1 class="p-4 text-center h4" id="title">Create an Appointment</h1>
-        </nav>
-        <section class="apptGridContainer">
-
+        <section class="apptGridContainer m-4">
+            
             <section class="apptFormContainer container-fluid">
+                <h1 class="pb-4  text-left h4" id="title">Create an Appointment</h1>
                 <form class="d-flex-column justify-content-center align-items-center" action="" id="userInputForm">
                     <p>
                         <small class="text-danger">* required field</small>
@@ -48,6 +46,21 @@
                         <input class="form-control" type="email" id="email">
                     </div>
                     <div class="mb-3">
+                        <label class="form-label" for="apptType">
+                            Appointment Type                         
+                            <small class="text-danger">*</small>
+                        </label>
+                        <select name="type" id="apptType">
+                            <option value="">Select Type</option>
+                            <option value="Important">Important</option>
+                            <option value="Interview">Interview</option>
+                            <option value="Sales">Sales</option>
+                            <option value="Service">Service</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Remote">Remote</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label" for="date">
                             Appointment Date & Time
                             <small class="text-danger">*</small>
@@ -62,8 +75,8 @@
             </form>
         </section>
         <section>
-            <h3 class="p-4 text-center h4">Appointments:</h3>
-            <ul class="list-group" id="apptContainer">
+            <h3 class="pr-4 pb-4 h5 text-left">Appointments:</h3>
+            <ul class="list-group d-flex flex-column align-content-center" id="apptContainer">
                 <!-- Appointments display here... -->
             </ul>
         </section>
