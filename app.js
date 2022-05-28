@@ -55,17 +55,19 @@ function makeApptItem(firstName, lastName, email, type, id) {
         if($('#firstName').val().length !== 0) {
             $('#apptContainer').prepend(`
             <li class=" list-group-item">
-                <p>
-                  <span>
-                    <span>${apptItem.firstName}</span>
-                    <span>${apptItem.lastName}</span> 
-                  </span>
-                    <span>${apptItem.type}</span> 
-                </p>
-                 <p><span>${apptItem.email}</span></p>
-                    <button id="deleteApptBtn" class="btn btn-danger">X</button>
-                 <a onclick="apptSelected('${apptItem.id}')" class="btn btn-primary" href="#">view Appointment</a>
-            </li>  
+            <p class="d-flex justify-content-between">
+              <span>
+                <span>${item.firstName}</span>
+                <span>${item.lastName}</span> 
+              </span>
+                <span>${item.type}</span> 
+            </p>
+             <p><span>${item.email}</span></p>
+            <div class="d-flex justify-content-between">
+            <button id="deleteApptBtn" class="btn btn-danger">X</button>
+            <a onclick="apptSelected('${item.id}')" class="btn btn-primary" href="#">view Appointment</a>
+            </div>
+      </li>  
             `);
         } else {
             $('#userInputForm').prepend('<p class="text-danger">All fields are required</p>')
@@ -96,11 +98,22 @@ const apptSelected = (id) => {
             item.id === apptId ? 
             $('#apptDetail').html(
                 `
-                <div >
-                <span>${item.firstName}</span>
-                <span>${item.lastName}</span> 
-                <p><span>${item.email}</span></p>
-                </div>
+                <table class="table" >
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Type</th>
+                        <th>Delete</th>
+                    </tr>
+                    <tr>
+                        <td>${item.firstName}</td>
+                        <td>${item.lastName}</td>
+                        <td>${item.email}</td>
+                        <td>${item.type}</td>
+                        <td><button id="deleteApptBtn" class="btn btn-danger">X</button></td>
+                    </tr>
+                </table>
                 `)
                 :
                 null
