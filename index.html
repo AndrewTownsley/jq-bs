@@ -19,45 +19,47 @@
         <nav>
             <h1 class="p-4 text-center h4" id="title">Create an Appointment</h1>
         </nav>
-        <section class="apptFormContainer container-fluid">
-            <form class="d-flex-column justify-content-center align-items-center" action="" id="userInputForm">
-            <p>
-                <small class="text-danger">* required field</small>
-            </p>
-                <div class="mb-3">
-                    <label class="form-label" for="firstName">
-                        First Name 
-                        <small class="text-danger">*</small>
-                    </label>
-                    <input class="form-control" type="text" id="firstName">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="lastName">
-                        Last Name                         
-                        <small class="text-danger">*</small>
-                    </label>
-                    <input class="form-control" type="text" id="lastName">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="email">
-                        Email                         
-                        <small class="text-danger">*</small>
-                    </label>
-                    <input class="form-control" type="email" id="email">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="date">
-                        Appointment Date & Time
-                        <small class="text-danger">*</small>
-                    </label>
-                    <!-- Date & Time Picker -->
-                </div>
+        <section class="apptGridContainer">
+
+            <section class="apptFormContainer container-fluid">
+                <form class="d-flex-column justify-content-center align-items-center" action="" id="userInputForm">
+                    <p>
+                        <small class="text-danger">* required field</small>
+                    </p>
+                    <div class="mb-3">
+                        <label class="form-label" for="firstName">
+                            First Name 
+                            <small class="text-danger">*</small>
+                        </label>
+                        <input class="form-control" type="text" id="firstName">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="lastName">
+                            Last Name                         
+                            <small class="text-danger">*</small>
+                        </label>
+                        <input class="form-control" type="text" id="lastName">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="email">
+                            Email                         
+                            <small class="text-danger">*</small>
+                        </label>
+                        <input class="form-control" type="email" id="email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="date">
+                            Appointment Date & Time
+                            <small class="text-danger">*</small>
+                        </label>
+                        <!-- Date & Time Picker -->
+                    </div>
                 <div class="text-center">
                     <button class="btn btn-outline-primary" id="addApptBtn" type="button">
                         Book Appointment
                     </button>
                 </div>
-                </form>
+            </form>
         </section>
         <section>
             <h3 class="p-4 text-center h4">Appointments:</h3>
@@ -65,7 +67,8 @@
                 <!-- Appointments display here... -->
             </ul>
         </section>
-
+    </section>
+        
     </section>
     
 </body>

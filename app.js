@@ -6,8 +6,23 @@
       // !value in all fields ? BTN-disabled
       createAppt()
       getApptDetails()
-  })
-  let apptArray = [];
+      $('#apptContainer').prepend(apptArray.map((item) => {
+          return `<li class=" list-group-item">
+          <span>${item.firstName}</span>
+          <span>${item.lastName}</span> 
+          <p><span>${item.email}</span></p>
+          <button class="btn btn-outline-danger">X</button>
+          <a onclick="apptSelected('${item.id}')" class="btn btn-primary" href="#">view Appointment</a>
+          </li>
+          `
+        }))
+    })
+    
+    // Check if apptArray is in localStorage, if not, create new array
+    // if it is, get the array from localStorage and push to apptArray
+    let apptArray = JSON.parse(localStorage.getItem('apptArrayStorage'));
+    console.log("apptArray",apptArray);
+
 
 function makeApptItem(firstName, lastName, email, id) {
     return {
@@ -58,7 +73,7 @@ const apptSelected = (id) => {
 const getApptDetails = () => {
     let apptId = Number(sessionStorage.getItem('apptId'))
     let storedApptArray = JSON.parse(localStorage.getItem('apptArrayStorage'))
-    console.log("new appt array",storedApptArray);
+    // console.log("new appt array",storedApptArray);
     console.log("apptId",apptId);
     return storedApptArray.map((item) => {
         item.id === apptId ? 
@@ -74,4 +89,8 @@ const getApptDetails = () => {
         null
     })
   
+}
+
+const deleteAppt = () => {
+    
 }

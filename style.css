@@ -1,3 +1,8 @@
 .apptFormContainer {
     max-width: 500px;
 }
+
+.apptGridContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
