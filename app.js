@@ -18,7 +18,7 @@
             </p>
              <p><span>${item.email}</span></p>
             <div class="d-flex justify-content-between">
-            <button id="deleteApptBtn" class="btn btn-danger">X</button>
+            <button onclick="deleteAppt(${item.id})" id="deleteApptBtn" class="btn btn-danger">X</button>
             <a onclick="apptSelected('${item.id}')" class="btn btn-primary" href="#">view Appointment</a>
             </div>
       </li>
@@ -57,15 +57,15 @@ function makeApptItem(firstName, lastName, email, type, id) {
             <li class=" list-group-item">
             <p class="d-flex justify-content-between">
               <span>
-                <span>${item.firstName}</span>
-                <span>${item.lastName}</span> 
+                <span>${apptItem.firstName}</span>
+                <span>${apptItem.lastName}</span> 
               </span>
-                <span>${item.type}</span> 
+                <span>${apptItem.type}</span> 
             </p>
-             <p><span>${item.email}</span></p>
+             <p><span>${apptItem.email}</span></p>
             <div class="d-flex justify-content-between">
-            <button id="deleteApptBtn" class="btn btn-danger">X</button>
-            <a onclick="apptSelected('${item.id}')" class="btn btn-primary" href="#">view Appointment</a>
+            <button onclick="deleteAppt(${apptItem.id})" id="deleteApptBtn" class="btn btn-danger">X</button>
+            <a onclick="apptSelected('${apptItem.id}')" class="btn btn-primary" href="#">view Appointment</a>
             </div>
       </li>  
             `);
@@ -111,7 +111,7 @@ const apptSelected = (id) => {
                         <td>${item.lastName}</td>
                         <td>${item.email}</td>
                         <td>${item.type}</td>
-                        <td><button id="deleteApptBtn" class="btn btn-danger">X</button></td>
+                        <td><button onclick="deleteAppt(${item.id})" id="deleteApptBtn" class="btn btn-danger">X</button></td>
                     </tr>
                 </table>
                 `)
