@@ -1,8 +1,21 @@
+flatpickr("input[type=date]", {
+    // enableTime: true,
+    altFormat: "F j, Y",
+    dateFormat: "Y-m-d",
+    minDate: "today",
+    "disable": [
+        function(date) {
+            // return true to disable
+            return (date.getDay() === 0 || date.getDay() === 6);
+
+        }
+    ],
+    "locale": {
+        "firstDayOfWeek": 1 // start week on Monday
+    }
+});
+    
     jQuery(function() {
-      // Create new Appt with First Name on BTN CLick
-     
-      // Add to Appt Array
-      // map over appt array and append to appt div
       // !value in all fields ? BTN-disabled
       createAppt()
       getApptDetails()  
@@ -34,13 +47,15 @@
     console.log("apptArray",apptArray);
 
 
-function makeApptItem(firstName, lastName, email, type, id) {
+function makeApptItem(firstName, lastName, email, type, date, time, id) {
     return {
         firstName,
         lastName,
         email,
         type,
         id,
+        date,
+        time,
     }
 }
 
@@ -50,8 +65,11 @@ function makeApptItem(firstName, lastName, email, type, id) {
         const lastNameValue = $('#lastName').val()
         const emailValue = $('#email').val()
         const apptTypeValue = $('#apptType').val()
+        const dateValue = $('#apptDate').val()
+        const timeValue = $('#apptTime').val()
+        console.log(dateValue, timeValue);
         let id = apptArray ? apptArray.length + 1 : 1;
-        let apptItem = makeApptItem(firstNameValue, lastNameValue, emailValue, apptTypeValue, id)
+        let apptItem = makeApptItem(firstNameValue, lastNameValue, emailValue, apptTypeValue, dateValue, timeValue, id)
         if($('#firstName').val().length !== 0) {
             $('#apptContainer').prepend(`
             <li class=" list-group-item">
@@ -79,7 +97,6 @@ function makeApptItem(firstName, lastName, email, type, id) {
         // $('#apptDetail').html(detail)
         apptArray.push(apptItem)
         localStorage.setItem('apptArrayStorage', JSON.stringify(apptArray))
-        console.log("array afgter localstrge",apptArray);
     })
 }
 
@@ -92,8 +109,6 @@ const apptSelected = (id) => {
     const getApptDetails = () => {
         let apptId = Number(sessionStorage.getItem('apptId'))
         let storedApptArray = JSON.parse(localStorage.getItem('apptArrayStorage'))
-        // console.log("new appt array",storedApptArray);
-        console.log("apptId",apptId);
         return storedApptArray.map((item) => {
             item.id === apptId ? 
             $('#apptDetail').html(
@@ -122,7 +137,6 @@ const apptSelected = (id) => {
         }
         
 const deleteAppt = (id) => {
-    console.log("delete btn clicked");
     appyArray = apptArray.filter((item) => {
         return item.id !== id
     })

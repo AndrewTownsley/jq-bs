@@ -7,17 +7,23 @@
     <title>jQuery Todo Form</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script
     src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
     crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.2/dayjs.min.js" integrity="sha512-Ot7ArUEhJDU0cwoBNNnWe487kjL5wAOsIYig8llY/l0P2TUFwgsAHVmrZMHsT8NGo+HwkjTJsNErS6QqIkBxDw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="app.js" defer></script>
 </head>
 <body>
     
     <section>
+        <ul class="d-flex justify-content-center">
+            <li class="px-4 list-group-item"><a href="#">Create Appointment</a></li>
+            <li class="px-4 list-group-item"><a href="#">Appointments</a></li>
+        </ul>
         <section class="apptGridContainer m-4">
-            
             <section class="apptFormContainer container-fluid">
                 <h1 class="pb-4  text-left h4" id="title">Create an Appointment</h1>
                 <form class="d-flex-column justify-content-center align-items-center" action="" id="userInputForm">
@@ -29,21 +35,21 @@
                             First Name 
                             <small class="text-danger">*</small>
                         </label>
-                        <input class="form-control" type="text" id="firstName">
+                        <input class="form-control" type="text" id="firstName" placeholder="First Name">
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="lastName">
                             Last Name                         
                             <small class="text-danger">*</small>
                         </label>
-                        <input class="form-control" type="text" id="lastName">
+                        <input class="form-control" type="text" id="lastName" placeholder="Last Name">
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="email">
                             Email                         
                             <small class="text-danger">*</small>
                         </label>
-                        <input class="form-control" type="email" id="email">
+                        <input class="form-control" type="email" id="email" placeholder="Email Address">
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="apptType">
@@ -62,8 +68,11 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="date">
-                            Appointment Date & Time
+                            Appointment Date 
                             <small class="text-danger">*</small>
+                        </br>
+                            <input type="date" name="date" id="apptDate" placeholder="Select Date">
+                            <input type="time" name="date" id="apptTime">
                         </label>
                         <!-- Date & Time Picker -->
                     </div>
