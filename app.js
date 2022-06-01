@@ -14,6 +14,14 @@ flatpickr("input[type=date]", {
         "firstDayOfWeek": 1 // start week on Monday
     }
 });
+flatpickr("input[type=time]", {
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i",
+    minTime: "09:00",
+    maxTime: "17:00",
+});
+
     
     jQuery(function() {
       // !value in all fields ? BTN-disabled
@@ -32,7 +40,9 @@ flatpickr("input[type=date]", {
              <p><span>${item.email}</span></p>
             <div class="d-flex justify-content-between">
             <button onclick="deleteAppt(${item.id})" id="deleteApptBtn" class="btn btn-danger">X</button>
-            <a onclick="apptSelected('${item.id}')" class="btn btn-primary" href="#">view Appointment</a>
+            <a onclick="apptSelected('${item.id}')" class="btn btn-primary" href="#">
+                Details
+            </a>
             </div>
       </li>
           `
@@ -65,9 +75,16 @@ function makeApptItem(firstName, lastName, email, type, date, time, id) {
         const lastNameValue = $('#lastName').val()
         const emailValue = $('#email').val()
         const apptTypeValue = $('#apptType').val()
-        const dateValue = $('#apptDate').val()
+        const dateValueInput = $('#apptDate').val()
+        const dateUnformatted = dayjs(dateValueInput)
+        const dateValue = dateUnformatted.format(("M/D/YYYY"))
         const timeValue = $('#apptTime').val()
-        console.log(dateValue, timeValue);
+        // const timeUnformatted = dayjs(timeValueInput)
+        // const timeValue = timeUnformatted.format(("h:mm A"))
+        // console.log(dateValue, timeValue);
+        console.log(timeValue);
+        // console.log(timeUnformatted);
+        // console.log(timeValue);
         let id = apptArray ? apptArray.length + 1 : 1;
         let apptItem = makeApptItem(firstNameValue, lastNameValue, emailValue, apptTypeValue, dateValue, timeValue, id)
         if($('#firstName').val().length !== 0) {
