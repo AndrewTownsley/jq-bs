@@ -14,14 +14,10 @@ flatpickr("input[type=date]", {
         "firstDayOfWeek": 1 // start week on Monday
     }
 });
-flatpickr("input[type=time]", {
-    enableTime: true,
-    noCalendar: true,
-    dateFormat: "H:i",
-    minTime: "09:00",
-    maxTime: "17:00",
+var timepicker = $('#apptTime').timepicker({
+    format: 'h.MM TT',
+    mode: 'ampm',
 });
-
     
     jQuery(function() {
       // !value in all fields ? BTN-disabled
@@ -37,7 +33,8 @@ flatpickr("input[type=time]", {
               </span>
                 <span>${item.type}</span> 
             </p>
-             <p><span>${item.email}</span></p>
+             <p><span>${item.date}</span></p>
+             <p><span>${item.time}</span></p>
             <div class="d-flex justify-content-between">
             <button onclick="deleteAppt(${item.id})" id="deleteApptBtn" class="btn btn-danger">X</button>
             <a onclick="apptSelected('${item.id}')" class="btn btn-primary" href="#">
@@ -79,12 +76,7 @@ function makeApptItem(firstName, lastName, email, type, date, time, id) {
         const dateUnformatted = dayjs(dateValueInput)
         const dateValue = dateUnformatted.format(("M/D/YYYY"))
         const timeValue = $('#apptTime').val()
-        // const timeUnformatted = dayjs(timeValueInput)
-        // const timeValue = timeUnformatted.format(("h:mm A"))
-        // console.log(dateValue, timeValue);
         console.log(timeValue);
-        // console.log(timeUnformatted);
-        // console.log(timeValue);
         let id = apptArray ? apptArray.length + 1 : 1;
         let apptItem = makeApptItem(firstNameValue, lastNameValue, emailValue, apptTypeValue, dateValue, timeValue, id)
         if($('#firstName').val().length !== 0) {
@@ -97,7 +89,8 @@ function makeApptItem(firstName, lastName, email, type, date, time, id) {
               </span>
                 <span>${apptItem.type}</span> 
             </p>
-             <p><span>${apptItem.email}</span></p>
+            <p><span>${apptItem.date}</span></p>
+            <p><span>${apptItem.time}</span></p>
             <div class="d-flex justify-content-between">
             <button onclick="deleteAppt(${apptItem.id})" id="deleteApptBtn" class="btn btn-danger">X</button>
             <a onclick="apptSelected('${apptItem.id}')" class="btn btn-primary" href="#">view Appointment</a>
