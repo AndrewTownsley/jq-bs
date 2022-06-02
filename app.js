@@ -129,6 +129,8 @@ const apptSelected = (id) => {
                         <th>Last Name</th>
                         <th>Email</th>
                         <th>Type</th>
+                        <th>Date</th>
+                        <th>Time</th>
                         <th>Delete</th>
                     </tr>
                     <tr>
@@ -136,6 +138,8 @@ const apptSelected = (id) => {
                         <td>${item.lastName}</td>
                         <td>${item.email}</td>
                         <td>${item.type}</td>
+                        <td>${item.date}</td>
+                        <td>${item.time}</td>
                         <td><button onclick="deleteAppt(${item.id})" id="deleteApptBtn" class="btn btn-danger">X</button></td>
                     </tr>
                 </table>
